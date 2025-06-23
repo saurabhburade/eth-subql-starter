@@ -37,6 +37,7 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
         totalTransactionCountDynamicFee: ZERO_BD,
       });
     }
+    collectiveData?.save();
   }
   for (let index = 0; index < transactions.length; index++) {
     const txn = transactions[index];
