@@ -64,7 +64,8 @@ export async function handleAccount(
       accountEntity.totalDAFees = accountEntity.totalDAFees! + Number(feesDA)!;
       accountEntity.totalDAFeesUSD = accountEntity.totalDAFeesUSD! + feesUSDDA;
       accountEntity.totalDataSubmissionCount =
-        accountEntity.totalDataSubmissionCount! + 1;
+        accountEntity.totalDataSubmissionCount! +
+        Number(decodedTxn.blobVersionedHashes?.length);
 
       accountEntity.totalByteSize =
         accountEntity.totalByteSize + Number(dataSubmissionSize);
@@ -159,7 +160,8 @@ export async function handleAccountDayData(
     accountDayDataRecord.totalDAFeesUSD =
       accountDayDataRecord.totalDAFeesUSD! + feesUSDDA;
     accountDayDataRecord.totalDataSubmissionCount =
-      accountDayDataRecord.totalDataSubmissionCount! + 1;
+      accountDayDataRecord.totalDataSubmissionCount! +
+      Number(decodedTxn.blobVersionedHashes?.length);
     accountDayDataRecord.totalByteSize =
       accountDayDataRecord.totalByteSize + Number(dataSubmissionSize);
     if (accountDayDataRecord.endBlock!.toString() != block.height.toString()) {
@@ -254,7 +256,8 @@ export async function handleAccountHourData(
     accountHourDataRecord.totalDAFeesUSD =
       accountHourDataRecord.totalDAFeesUSD! + feesUSDDA;
     accountHourDataRecord.totalDataSubmissionCount =
-      accountHourDataRecord.totalDataSubmissionCount! + 1;
+      accountHourDataRecord.totalDataSubmissionCount! +
+      Number(decodedTxn.blobVersionedHashes?.length);
     accountHourDataRecord.totalByteSize =
       accountHourDataRecord.totalByteSize + Number(dataSubmissionSize);
     if (accountHourDataRecord.endBlock!.toString() != block.height.toString()) {
