@@ -34,7 +34,7 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
     id: block.number.toString(),
     avgNativePrice: priceData?.nativePrice!,
     currentNativePrice: priceData?.nativePrice!,
-    hash: "",
+    hash: block.hash,
     height: block.number,
     proposer: block.miner,
     totalBlobSize: 0,
@@ -139,6 +139,7 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
           size: BYTES_PER_BLOB,
           shareVersion: "",
           transactionId: txn.hash,
+          blockHeightId: block.number.toString(),
         });
         blobs.push(blob);
       }
@@ -156,8 +157,8 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
 
     store.bulkUpdate("BlobData", blobs),
     store.bulkUpdate("TransactionData", txnRecords),
-    bdata.save(),
   ]);
+  await bdata.save();
 
   // await store.bulkUpdate("AccountEntity", accountsToSave);
   // await store.bulkUpdate("AccountDayData", accountDayDatas);
