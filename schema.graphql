@@ -67,6 +67,7 @@ type TransactionData @entity {
 
   amount: Float!
   denomination: String!
+  lastPriceFeed: PriceFeedMinute
 
   txFeeNative: Float!
   nMessages: Float!
