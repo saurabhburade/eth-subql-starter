@@ -38,7 +38,14 @@ const project: EthereumProject = {
      * If you use a rate limited endpoint, adjust the --batch-size and --workers parameters
      * These settings can be found in your docker-compose.yaml, they will slow indexing but prevent your project being rate limited
      */
-    endpoint: ["https://ethereum-rpc.publicnode.com", "wss://eth.drpc.org"],
+    endpoint: [
+      "https://rpc.flashbots.net/fast",
+      "wss://0xrpc.io/eth",
+      "https://eth.llamarpc.com",
+      "wss://ethereum-rpc.publicnode.com",
+      "https://eth.merkle.io",
+      "https://eth1.lava.build",
+    ],
   },
   dataSources: [
     {
