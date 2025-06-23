@@ -2,47 +2,25 @@ import { EthereumBlock } from "@subql/types-ethereum";
 import { CollectiveData } from "../types";
 
 import { ZERO_BD } from "../utils";
+import { handleAccount } from "./entities/accountData";
+import { handleNewPriceMinute } from "./pricefeed/savePrices";
 
 export async function handleBlock(block: EthereumBlock): Promise<void> {
+  const priceData = await handleNewPriceMinute({ block });
+
+  logger.info(`PRICE DATA FOUND ::  ${priceData?.nativePrice}`);
   logger.info(`BLOCK ::: ${block.number}`);
   const transactions = block.transactions;
-  if (block.transactions) {
-    let collectiveData = await CollectiveData.get("1");
-    if (collectiveData === null) {
-      collectiveData = await CollectiveData.create({
-        id: "1",
-        totalBlobTransactionCount: ZERO_BD,
-        totalValue: ZERO_BD,
-        totalValueEth: ZERO_BD,
-        totalGasEth: ZERO_BD,
-        totalFeeEth: ZERO_BD,
-        totalGasUsed: ZERO_BD,
-        totalCumulativeGasUsed: ZERO_BD,
-        totalBlobGas: ZERO_BD,
-        totalBlobGasFeeCap: ZERO_BD,
-        totalBlobHashesCount: ZERO_BD,
-        totalBlobGasEth: ZERO_BD,
-        totalBlobBlocks: ZERO_BD,
-        totalFeeUSD: ZERO_BD,
-        totalGasUSD: ZERO_BD,
-        totalValueUSD: ZERO_BD,
-        totalBlobGasUSD: ZERO_BD,
-        avgEthPrice: ZERO_BD,
-        currentEthPrice: ZERO_BD,
-        totalFeeBurnedETH: ZERO_BD,
-        totalFeeBurnedUSD: ZERO_BD,
-        totalTransactionCount: ZERO_BD,
-        totalTransactionCountLegacy: ZERO_BD,
-        totalTransactionCountAccessList: ZERO_BD,
-        totalTransactionCountDynamicFee: ZERO_BD,
-      });
-    }
-    collectiveData?.save();
-  }
+  const accountsToSave = [];
   for (let index = 0; index < transactions.length; index++) {
     const txn = transactions[index];
 
     if (txn.type === "0x3") {
+      const acc = await handleAccount(txn, priceData!, {
+        height: block.number,
+        timestamp: Number(block.timestamp) * 1000,
+      });
+      accountsToSave.push(acc);
       let hashes: string[] = [];
 
       if (txn.blobVersionedHashes) {
@@ -70,4 +48,5 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
       // handleCollectiveDataOtherTxn(txn, block);
     }
   }
+  await store.bulkUpdate("AccountEntity", accountsToSave);
 }
