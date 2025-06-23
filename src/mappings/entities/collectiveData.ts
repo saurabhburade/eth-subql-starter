@@ -7,8 +7,6 @@ import {
   PriceFeedMinute,
 } from "../../types";
 
-import { CosmosBlock } from "@subql/types-cosmos";
-import { TxStats } from "../../utils/decodeBlockTx";
 import { EthereumTransaction } from "@subql/types-ethereum";
 import { BYTES_PER_BLOB } from "../../utils";
 
