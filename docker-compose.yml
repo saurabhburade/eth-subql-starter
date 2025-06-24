@@ -14,7 +14,7 @@ services:
 
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
+      interval: 10s
       timeout: 5s
       retries: 5
 
@@ -33,16 +33,16 @@ services:
       - ${SUB_COMMAND:-} # set SUB_COMMAND env variable to "test" to run tests
       - -f=/app
       - --db-schema=app
-      - --workers=3
-      - --batch-size=50
+      - --workers=6
+      - --batch-size=100
       - --unsafe=true
       - --allow-schema-migration
       - --scale-batch-size
       - --unfinalized-blocks=false
-      - --timeout=1800
+
     healthcheck:
       test: ["CMD", "curl", "-f", "http://subquery-node:3000/ready"]
-      interval: 3s
+      interval: 10s
       timeout: 60s
       retries: 10
 
