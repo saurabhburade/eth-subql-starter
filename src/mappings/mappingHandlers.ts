@@ -76,72 +76,73 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
       lastPriceFeedId: priceData!.id,
     });
     txnRecords.push(transactionToSave);
-
-    const acc = await handleAccount(txn, priceData!, {
-      height: block.number,
-      timestamp: Number(block.timestamp) * 1000,
-    });
-    accountsToSave.push(acc);
-
-    const accDayData = await handleAccountDayData(txn, priceData!, {
-      height: block.number,
-      timestamp: Number(block.timestamp) * 1000,
-    });
-    accountDayDatas.push(accDayData);
-
-    const accHourData = await handleAccountHourData(txn, priceData!, {
-      height: block.number,
-      timestamp: Number(block.timestamp) * 1000,
-    });
-    accountHourDatas.push(accHourData);
-
-    const collectiveData = await handleCollective(txn, priceData!, {
-      height: block.number,
-      timestamp: Number(block.timestamp) * 1000,
-    });
-    const collectiveDayData = await handleCollectiveDayData(
-      txn,
-      priceData!,
-      {
+    if (txn.type === "0x3") {
+      const acc = await handleAccount(txn, priceData!, {
         height: block.number,
         timestamp: Number(block.timestamp) * 1000,
-      },
+      });
+      accountsToSave.push(acc);
 
-      collectiveData
-    );
-    const collectiveHourData = await handleCollectiveHourData(
-      txn,
-      priceData!,
-      {
+      const accDayData = await handleAccountDayData(txn, priceData!, {
         height: block.number,
         timestamp: Number(block.timestamp) * 1000,
-      },
+      });
+      accountDayDatas.push(accDayData);
 
-      collectiveData
-    );
+      const accHourData = await handleAccountHourData(txn, priceData!, {
+        height: block.number,
+        timestamp: Number(block.timestamp) * 1000,
+      });
+      accountHourDatas.push(accHourData);
 
-    collectiveDataEntities.push(collectiveData);
-    collectiveDayDatas.push(collectiveDayData);
-    collectiveHourDatas.push(collectiveHourData);
+      const collectiveData = await handleCollective(txn, priceData!, {
+        height: block.number,
+        timestamp: Number(block.timestamp) * 1000,
+      });
+      const collectiveDayData = await handleCollectiveDayData(
+        txn,
+        priceData!,
+        {
+          height: block.number,
+          timestamp: Number(block.timestamp) * 1000,
+        },
 
-    let hashes: string[] = [];
+        collectiveData
+      );
+      const collectiveHourData = await handleCollectiveHourData(
+        txn,
+        priceData!,
+        {
+          height: block.number,
+          timestamp: Number(block.timestamp) * 1000,
+        },
 
-    if (txn.blobVersionedHashes) {
-      for (let index = 0; index < txn.blobVersionedHashes.length; index++) {
-        const blobHashRaw = txn.blobVersionedHashes[index];
-        const blobHash = blobHashRaw;
-        // hashes.push(blobHash);
-        const blob = BlobData.create({
-          id: blobHash,
-          commitment: "",
-          data: "",
-          signerId: txn.from,
-          size: BYTES_PER_BLOB,
-          shareVersion: "",
-          transactionId: txn.hash,
-          blockHeightId: block.number.toString(),
-        });
-        blobs.push(blob);
+        collectiveData
+      );
+
+      collectiveDataEntities.push(collectiveData);
+      collectiveDayDatas.push(collectiveDayData);
+      collectiveHourDatas.push(collectiveHourData);
+
+      let hashes: string[] = [];
+
+      if (txn.blobVersionedHashes) {
+        for (let index = 0; index < txn.blobVersionedHashes.length; index++) {
+          const blobHashRaw = txn.blobVersionedHashes[index];
+          const blobHash = blobHashRaw;
+          // hashes.push(blobHash);
+          const blob = BlobData.create({
+            id: blobHash,
+            commitment: "",
+            data: "",
+            signerId: txn.from,
+            size: BYTES_PER_BLOB,
+            shareVersion: "",
+            transactionId: txn.hash,
+            blockHeightId: block.number.toString(),
+          });
+          blobs.push(blob);
+        }
       }
     }
   }
