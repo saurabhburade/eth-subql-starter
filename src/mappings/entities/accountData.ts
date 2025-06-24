@@ -86,8 +86,8 @@ export async function handleAccount(
     accountEntity.endBlock = block.height;
 
     // return accountEntity;
-    // await accountEntity.save();
-    return accountEntity;
+    await accountEntity.save();
+    // return accountEntity;
   } catch (error) {
     logger.error(`New ACCOUNT SAVE ERROR::::::  ${error}`);
     throw error;
@@ -186,8 +186,8 @@ export async function handleAccountDayData(
   // if (type === 1) {
   //   await accountDayDataRecord.save();
   // }
-  return accountDayDataRecord;
-  // await accountDayDataRecord.save();
+  // return accountDayDataRecord;
+  await accountDayDataRecord.save();
 }
 export async function handleAccountHourData(
   decodedTxn: EthereumTransaction,
@@ -283,6 +283,6 @@ export async function handleAccountHourData(
   // if (type === 1) {
   //   await accountDayDataRecord.save();
   // }
-  return accountHourDataRecord;
-  // await accountHourDataRecord.save();
+  // return accountHourDataRecord;
+  await accountHourDataRecord.save();
 }

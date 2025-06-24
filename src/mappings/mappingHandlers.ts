@@ -81,19 +81,19 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
       height: block.number,
       timestamp: Number(block.timestamp) * 1000,
     });
-    accountsToSave.push(acc);
 
     const accDayData = await handleAccountDayData(txn, priceData!, {
       height: block.number,
       timestamp: Number(block.timestamp) * 1000,
     });
-    accountDayDatas.push(accDayData);
 
     const accHourData = await handleAccountHourData(txn, priceData!, {
       height: block.number,
       timestamp: Number(block.timestamp) * 1000,
     });
-    accountHourDatas.push(accHourData);
+    // accountsToSave.push(acc);
+    // accountDayDatas.push(accDayData);
+    // accountHourDatas.push(accHourData);
 
     const collectiveData = await handleCollective(txn, priceData!, {
       height: block.number,
@@ -120,9 +120,9 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
       collectiveData
     );
 
-    collectiveDataEntities.push(collectiveData);
-    collectiveDayDatas.push(collectiveDayData);
-    collectiveHourDatas.push(collectiveHourData);
+    // collectiveDataEntities.push(collectiveData);
+    // collectiveDayDatas.push(collectiveDayData);
+    // collectiveHourDatas.push(collectiveHourData);
 
     let hashes: string[] = [];
 
@@ -160,15 +160,15 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
   // ]);
   await bdata.save();
 
-  await store.bulkUpdate("AccountEntity", accountsToSave);
-  await store.bulkUpdate("AccountDayData", accountDayDatas);
-  await store.bulkUpdate("AccountHourData", accountHourDatas);
+  // await store.bulkUpdate("AccountEntity", accountsToSave);
+  // await store.bulkUpdate("AccountDayData", accountDayDatas);
+  // await store.bulkUpdate("AccountHourData", accountHourDatas);
 
-  await store.bulkUpdate("BlobData", blobs);
-  await store.bulkUpdate("TransactionData", txnRecords);
+  // await store.bulkUpdate("BlobData", blobs);
+  // await store.bulkUpdate("TransactionData", txnRecords);
 
-  await store.bulkUpdate("CollectiveData", collectiveDataEntities);
-  await store.bulkUpdate("CollectiveDayData", collectiveDayDatas);
-  await store.bulkUpdate("CollectiveHourData", collectiveHourDatas);
+  // await store.bulkUpdate("CollectiveData", collectiveDataEntities);
+  // await store.bulkUpdate("CollectiveDayData", collectiveDayDatas);
+  // await store.bulkUpdate("CollectiveHourData", collectiveHourDatas);
   // await bdata.save();
 }
