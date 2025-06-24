@@ -49,7 +49,7 @@ const project: EthereumProject = {
   dataSources: [
     {
       kind: EthereumDatasourceKind.Runtime,
-      startBlock: 19426947,
+      startBlock: 19426500,
 
       mapping: {
         file: "./dist/index.js",
