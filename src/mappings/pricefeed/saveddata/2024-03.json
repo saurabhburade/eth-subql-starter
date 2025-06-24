@@ -1,5 +1,107 @@
 [
   {
+    "avgPrice": 3974.0950000000003,
+    "timestamp": 1710337140000,
+    "timestampF": "2024-03-13T13:39:00.000Z",
+    "minuteId": 28505619
+  },
+  {
+    "avgPrice": 3976.995,
+    "timestamp": 1710337200000,
+    "timestampF": "2024-03-13T13:40:00.000Z",
+    "minuteId": 28505620
+  },
+  {
+    "avgPrice": 3975.77,
+    "timestamp": 1710337260000,
+    "timestampF": "2024-03-13T13:41:00.000Z",
+    "minuteId": 28505621
+  },
+  {
+    "avgPrice": 3980.1949999999997,
+    "timestamp": 1710337320000,
+    "timestampF": "2024-03-13T13:42:00.000Z",
+    "minuteId": 28505622
+  },
+  {
+    "avgPrice": 3983.1000000000004,
+    "timestamp": 1710337380000,
+    "timestampF": "2024-03-13T13:43:00.000Z",
+    "minuteId": 28505623
+  },
+  {
+    "avgPrice": 3982.125,
+    "timestamp": 1710337440000,
+    "timestampF": "2024-03-13T13:44:00.000Z",
+    "minuteId": 28505624
+  },
+  {
+    "avgPrice": 3978.955,
+    "timestamp": 1710337500000,
+    "timestampF": "2024-03-13T13:45:00.000Z",
+    "minuteId": 28505625
+  },
+  {
+    "avgPrice": 3972.0150000000003,
+    "timestamp": 1710337560000,
+    "timestampF": "2024-03-13T13:46:00.000Z",
+    "minuteId": 28505626
+  },
+  {
+    "avgPrice": 3968.2,
+    "timestamp": 1710337620000,
+    "timestampF": "2024-03-13T13:47:00.000Z",
+    "minuteId": 28505627
+  },
+  {
+    "avgPrice": 3968.835,
+    "timestamp": 1710337680000,
+    "timestampF": "2024-03-13T13:48:00.000Z",
+    "minuteId": 28505628
+  },
+  {
+    "avgPrice": 3962.6850000000004,
+    "timestamp": 1710337740000,
+    "timestampF": "2024-03-13T13:49:00.000Z",
+    "minuteId": 28505629
+  },
+  {
+    "avgPrice": 3963.33,
+    "timestamp": 1710337800000,
+    "timestampF": "2024-03-13T13:50:00.000Z",
+    "minuteId": 28505630
+  },
+  {
+    "avgPrice": 3961.6,
+    "timestamp": 1710337860000,
+    "timestampF": "2024-03-13T13:51:00.000Z",
+    "minuteId": 28505631
+  },
+  {
+    "avgPrice": 3956.425,
+    "timestamp": 1710337920000,
+    "timestampF": "2024-03-13T13:52:00.000Z",
+    "minuteId": 28505632
+  },
+  {
+    "avgPrice": 3961.5950000000003,
+    "timestamp": 1710337980000,
+    "timestampF": "2024-03-13T13:53:00.000Z",
+    "minuteId": 28505633
+  },
+  {
+    "avgPrice": 3955.41,
+    "timestamp": 1710338040000,
+    "timestampF": "2024-03-13T13:54:00.000Z",
+    "minuteId": 28505634
+  },
+  {
+    "avgPrice": 3954.3599999999997,
+    "timestamp": 1710338100000,
+    "timestampF": "2024-03-13T13:55:00.000Z",
+    "minuteId": 28505635
+  },
+  {
     "avgPrice": 3954.95,
     "timestamp": 1710338160000,
     "timestampF": "2024-03-13T13:56:00.000Z",
@@ -17,7 +119,6 @@
     "timestampF": "2024-03-13T13:58:00.000Z",
     "minuteId": 28505638
   },
-
   {
     "avgPrice": 3968.1800000000003,
     "timestamp": 1710338340000,
