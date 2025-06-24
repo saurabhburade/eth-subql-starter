@@ -39,12 +39,7 @@ const project: EthereumProject = {
      * These settings can be found in your docker-compose.yaml, they will slow indexing but prevent your project being rate limited
      */
     endpoint: [
-      "wss://0xrpc.io/eth",
-      "https://eth.llamarpc.com",
-      "wss://ethereum-rpc.publicnode.com",
-      "https://eth.merkle.io",
-      "https://eth-mainnet.public.blastapi.io",
-      "https://eth.drpc.org",
+      "wss://lb.drpc.org/ogws?network=ethereum&dkey=ArT8p5S52UM0rgz3Qb99bmsedepYUR8R8JLJrqRhf0fE",
     ],
   },
   dataSources: [
