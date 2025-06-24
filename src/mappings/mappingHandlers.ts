@@ -41,7 +41,9 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
     totalBlobTransactionCount: 0,
     totalBlockFeeNatve: 0,
     totalBlockFeeUSD: 0,
-    totalEventsCount: 0,
+    totalDAFeeNatve: 0,
+    totalDAFeeUSD: 0,
+    totalEventsCount: block.logs.length,
     totalSquareSize: 0,
     totalTransactionCount: transactions.length,
     timestamp: Number(block.timestamp) * 1000,
@@ -74,9 +76,19 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
       blockHeightId: block.number.toString(),
       signerId: txn.from,
       lastPriceFeedId: priceData!.id,
+      totalDAFeeNatve: feesDA,
+      totalDAFeeUSD: feesUSDDA,
+      totalFeeNatve: fees,
+      totalFeeUSD: feesUSD,
     });
     txnRecords.push(transactionToSave);
+    bdata.totalBlobSize += dataSubmissionSize;
+    bdata.totalBlockFeeNatve += fees;
+    bdata.totalBlockFeeUSD += feesUSD;
     if (txn.type === "0x3") {
+      bdata.totalDAFeeNatve += feesDA;
+      bdata.totalDAFeeUSD += feesUSDDA;
+      bdata.totalBlobTransactionCount += 1;
       const acc = await handleAccount(txn, priceData!, {
         height: block.number,
         timestamp: Number(block.timestamp) * 1000,

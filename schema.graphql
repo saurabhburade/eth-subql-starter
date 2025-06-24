@@ -41,6 +41,8 @@ type BlockData @entity {
   currentNativePrice: Float!
   totalBlockFeeNatve: Float!
   totalBlockFeeUSD: Float!
+  totalDAFeeNatve: Float!
+  totalDAFeeUSD: Float!
 
   timestamp: Float
   transactions: [TransactionData] @derivedFrom(field: "blockHeight")
@@ -76,6 +78,11 @@ type TransactionData @entity {
   nEvents: Float!
   nDataSubs: Float!
   totalBytes: Float!
+
+  totalFeeNatve: Float!
+  totalFeeUSD: Float!
+  totalDAFeeNatve: Float!
+  totalDAFeeUSD: Float!
 
   isBlobTransaction: Boolean!
   blobs: [BlobData] @derivedFrom(field: "transaction")
