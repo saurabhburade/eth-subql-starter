@@ -43,7 +43,6 @@ const project: EthereumProject = {
       "https://eth.llamarpc.com",
       "https://eth-mainnet.public.blastapi.io",
       "wss://eth.drpc.org",
-      "https://ethereum.rpc.subquery.network/public",
     ],
   },
   dataSources: [
