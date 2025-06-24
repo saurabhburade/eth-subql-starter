@@ -1,5 +1,11 @@
 import { EthereumBlock } from "@subql/types-ethereum";
-import { BlobData, BlockData, CollectiveData, TransactionData } from "../types";
+import {
+  AccountEntity,
+  BlobData,
+  BlockData,
+  CollectiveData,
+  TransactionData,
+} from "../types";
 
 import { BYTES_PER_BLOB, ZERO_BD } from "../utils";
 import {
@@ -85,6 +91,7 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
     bdata.totalBlobSize += dataSubmissionSize;
     bdata.totalBlockFeeNatve += fees;
     bdata.totalBlockFeeUSD += feesUSD;
+
     if (txn.type === "0x3") {
       bdata.totalDAFeeNatve += feesDA;
       bdata.totalDAFeeUSD += feesUSDDA;
@@ -155,6 +162,28 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
           });
           blobs.push(blob);
         }
+      }
+    } else {
+      const account = await AccountEntity.get(txn.from);
+      if (account && account !== null) {
+        // save  account datas for other txns
+        const acc = await handleAccount(txn, priceData!, {
+          height: block.number,
+          timestamp: Number(block.timestamp) * 1000,
+        });
+        accountsToSave.push(acc);
+
+        const accDayData = await handleAccountDayData(txn, priceData!, {
+          height: block.number,
+          timestamp: Number(block.timestamp) * 1000,
+        });
+        accountDayDatas.push(accDayData);
+
+        const accHourData = await handleAccountHourData(txn, priceData!, {
+          height: block.number,
+          timestamp: Number(block.timestamp) * 1000,
+        });
+        accountHourDatas.push(accHourData);
       }
     }
   }
