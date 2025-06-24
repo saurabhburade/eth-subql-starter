@@ -157,6 +157,7 @@ export async function handleBlock(block: EthereumBlock): Promise<void> {
 
     store.bulkUpdate("BlobData", blobs),
     store.bulkUpdate("TransactionData", txnRecords),
+    bdata.save(),
   ]);
   // await bdata.save(), await store.bulkUpdate("AccountEntity", accountsToSave);
   // await store.bulkUpdate("AccountDayData", accountDayDatas);
