@@ -40,6 +40,8 @@ const project: EthereumProject = {
      */
     endpoint: [
       "wss://lb.drpc.org/ogws?network=ethereum&dkey=ArT8p5S52UM0rgz3Qb99bmsedepYUR8R8JLJrqRhf0fE",
+      "https://1.rpc.hypersync.xyz",
+      "https://eth.rpc.hypersync.xyz",
     ],
   },
   dataSources: [
