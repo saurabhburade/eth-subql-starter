@@ -40,17 +40,12 @@ const project: EthereumProject = {
      */
     endpoint: [
       "wss://lb.drpc.org/ogws?network=ethereum&dkey=ArT8p5S52UM0rgz3Qb99bmsedepYUR8R8JLJrqRhf0fE",
-      "https://eth.llamarpc.com",
+      "https://rpc.ankr.com/eth/f966ebe407abe74ead6049b91d40bc36aa908b2b6209b041fb0584ec3c96d927",
+      "wss://eth-mainnet.blastapi.io/c6fa55f7-bd66-415d-a0df-a03d0ab010db",
+      "https://mainnet.gateway.tenderly.co/4xf8YI6aUgYitPpoUnWC64",
       "https://eth-mainnet.public.blastapi.io",
-      "wss://eth.drpc.org",
       "https://ethereum-rpc.publicnode.com",
-      "wss://ethereum-rpc.publicnode.com",
-      "https://rpc.mevblocker.io",
-      "https://0xrpc.io/eth",
-      "https://eth.rpc.blxrbdn.com",
-      "https://eth-mainnet.rpcfast.com?api_key=xbhWBI1Wkguk8SNMu1bvvLurPGLXmgwYeC4S6g2H7WdwFigZSmPWVZRxrskEQwIf",
-      "https://ethereum.public.blockpi.network/v1/rpc/public",
-      "https://gateway.tenderly.co/public/mainnet",
+      "https://eth.drpc.org",
     ],
   },
   dataSources: [
