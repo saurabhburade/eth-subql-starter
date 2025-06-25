@@ -51,8 +51,6 @@ const project: EthereumProject = {
       "https://eth-mainnet.rpcfast.com?api_key=xbhWBI1Wkguk8SNMu1bvvLurPGLXmgwYeC4S6g2H7WdwFigZSmPWVZRxrskEQwIf",
       "https://ethereum.public.blockpi.network/v1/rpc/public",
       "https://gateway.tenderly.co/public/mainnet",
-      "https://eth.blockrazor.xyz",
-      "https://rpc.therpc.io/ethereum",
     ],
   },
   dataSources: [
