@@ -43,7 +43,7 @@ services:
       - -f=/app
       - --db-schema=app
       - --workers=8
-      - --batch-size=100
+      - --batch-size=10
       - --unsafe=true
       - --allow-schema-migration
       - --scale-batch-size
